@@ -80,7 +80,7 @@ x_ = df_[df_['kode_negara']==kode]['tahun'].tolist()
 y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 
 reg = LinearRegression()
-if x_ and y_ is np.empty:
+if y_ is np.empty:
     st.error('Data produksi negara yang dipilih tidak ditemukan!')
 else:
     reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
