@@ -80,7 +80,9 @@ x_ = df_[df_['kode_negara']==kode]['tahun'].tolist()
 y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 
 reg = LinearRegression()
-if kode in x_ and y_:
+if x_ and y_ is np.empty:
+    st.error('Data produksi negara yang dipilih tidak ditemukan!')
+else:
     reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
     m = reg.coef_[0]
     c = reg.intercept_
@@ -93,8 +95,6 @@ if kode in x_ and y_:
     fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
     right_col.subheader('Grafik Data Produksi')
     right_col.plotly_chart(fig)
-else:
-    st.error('Data produksi negara yang dipilih tidak ditemukan!')
 
 #bagian b
 #col1
