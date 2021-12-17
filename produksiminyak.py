@@ -85,9 +85,13 @@ m = reg.coef_[0]
 c = reg.intercept_
 y_trend = [m*x+c for x in x_]
 dic = {'tahun':x_,'produksi':y_}
+left_col, right_col = st.columns([1,3])
+left_col.subheader("Tabel produksi minyak mentah ",negara)
+left_col.dataframe(dic)
 dic['trendline'] = y_trend
 fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
-st.plotly_chart(fig)
+right_col.subheader('Grafik Data Produksi')
+right_col.plotly_chart(fig)
 
 #bagian b
 #col1
