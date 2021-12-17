@@ -82,8 +82,8 @@ y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 reg = LinearRegression()
 a=np.array(x_).reshape(-1,1)
 b=np.array(y_)
-if a == [] :
-    reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
+reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
+try:
     m = reg.coef_[0]
     c = reg.intercept_
     y_trend = [m*x+c for x in x_]
@@ -95,7 +95,7 @@ if a == [] :
     fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
     right_col.subheader('Grafik Data Produksi')
     right_col.plotly_chart(fig)
-else :
+except :
     st.error('bro')
 
 #bagian b
