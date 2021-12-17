@@ -92,6 +92,8 @@ try:
 except:
     st.error('error')
 try :
+    y_trend = [m*x+c for x in x_]
+    dic = {'tahun':x_,'produksi':y_}
     dic['trendline'] = y_trend
     fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
     right_col.subheader('Grafik Data Produksi')
