@@ -91,18 +91,16 @@ try:
     left_col.dataframe(dic)
 except:
     st.error('error')
-try :
-    reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
-    m = reg.coef_[0]
-    c = reg.intercept_
-    y_trend = [m*x+c for x in x_]
-    dic = {'tahun':x_,'produksi':y_}
-    dic['trendline'] = y_trend
-    fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
-    right_col.subheader('Grafik Data Produksi')
-    right_col.plotly_chart(fig)    
-except:
-    st.error('gabisa 2')
+
+reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
+m = reg.coef_[0]
+c = reg.intercept_
+y_trend = [m*x+c for x in x_]
+dic = {'tahun':x_,'produksi':y_}
+dic['trendline'] = y_trend
+fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
+right_col.subheader('Grafik Data Produksi')
+right_col.plotly_chart(fig) 
 
 #bagian b
 #col1
