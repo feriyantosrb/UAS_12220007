@@ -82,18 +82,22 @@ y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 reg = LinearRegression()
 a=np.array(x_).reshape(-1,1)
 b=np.array(y_)
-reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
-m = reg.coef_[0]
-c = reg.intercept_
-y_trend = [m*x+c for x in x_]
-dic = {'tahun':x_,'produksi':y_}
-left_col, right_col = st.columns([1,3])
-left_col.subheader("Tabel produksi minyak mentah ",negara)
-left_col.dataframe(dic)
-dic['trendline'] = y_trend
-fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
-right_col.subheader('Grafik Data Produksi')
-right_col.plotly_chart(fig)
+if a.shape[0] is np.empty and b.shape[1] is np.empty :
+    st.error('bro')
+else:
+    reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
+    m = reg.coef_[0]
+    c = reg.intercept_
+    y_trend = [m*x+c for x in x_]
+    dic = {'tahun':x_,'produksi':y_}
+    left_col, right_col = st.columns([1,3])
+    left_col.subheader("Tabel produksi minyak mentah ",negara)
+    left_col.dataframe(dic)
+    dic['trendline'] = y_trend
+    fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
+    right_col.subheader('Grafik Data Produksi')
+    right_col.plotly_chart(fig)
+
 
 #bagian b
 #col1
