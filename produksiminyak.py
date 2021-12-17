@@ -105,7 +105,7 @@ col1.header('Bagian B')
 col1.subheader("Jumlah Produksi Minyak Mentah Terbesar")
 
 B = st.sidebar.number_input("Banyak negara dengan jumlah produksi terbesar (Bagian B)", min_value=1, max_value=None)
-T = st.sidebar.number_input("Tahun produksi (Bagian B)", min_value=1971, max_value=2015)
+T = st.sidebar.number_input("Tahun produksi (Bagian B dan C)", min_value=1971, max_value=2015)
 
 df = df_
 dfJ = df_info
