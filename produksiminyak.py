@@ -92,6 +92,9 @@ try:
 except:
     st.error('error')
 try :
+    reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
+    m = reg.coef_[0]
+    c = reg.intercept_
     y_trend = [m*x+c for x in x_]
     dic = {'tahun':x_,'produksi':y_}
     dic['trendline'] = y_trend
