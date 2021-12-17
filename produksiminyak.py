@@ -89,12 +89,15 @@ try:
     left_col, right_col = st.columns([1,3])
     left_col.subheader("Tabel produksi minyak mentah ",negara)
     left_col.dataframe(dic)
+except:
+    st.error('error')
+try :
     dic['trendline'] = y_trend
     fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
+    right_col.subheader('Grafik Data Produksi')
+    right_col.plotly_chart(fig)    
 except:
-    st.error('error bro')
-right_col.subheader('Grafik Data Produksi')
-right_col.plotly_chart(fig)    
+    st.error('gabisa 2')
 
 #bagian b
 #col1
