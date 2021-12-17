@@ -92,15 +92,17 @@ try:
 except:
     st.error('error')
 
-reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
 m = reg.coef_[0]
 c = reg.intercept_
 y_trend = [m*x+c for x in x_]
+if c >= 0:
+    equation = 'y={m:.2f}x+{c:.2f}'.format(m=m,c=c)
+else:
+    equation = 'y={m:.2f}x{c:.2f}'.format(m=m,c=c)
 dic = {'tahun':x_,'produksi':y_}
 dic['trendline'] = y_trend
 fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
-right_col.subheader('Grafik Data Produksi')
-right_col.plotly_chart(fig) 
+st.plotly_chart(fig)
 
 #bagian b
 #col1
