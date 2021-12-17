@@ -82,7 +82,7 @@ y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 reg = LinearRegression()
 a=np.array(x_).reshape(-1,1)
 b=np.array(y_)
-if a.shape[0] is np.empty and b.shape[1] is np.empty :
+if a.shape[0] is () and b.shape[1] is () :
     st.error('bro')
 else:
     reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
