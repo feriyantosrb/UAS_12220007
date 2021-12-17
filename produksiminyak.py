@@ -93,7 +93,6 @@ try:
     fig = px.scatter(pd.DataFrame(dic),x='tahun',y='produksi',trendline='lowess',trendline_options=dict(frac=0.1))
     right_col.subheader('Grafik Data Produksi')
     right_col.plotly_chart(fig)
-    st.error('Data produksi negara yang dipilih tidak ditemukan!')
 except:
     st.error('error bro')
     
