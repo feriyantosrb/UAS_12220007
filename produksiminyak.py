@@ -82,7 +82,7 @@ y_ = df_[df_['kode_negara']==kode]['produksi'].tolist()
 reg = LinearRegression()
 a=np.array(x_).reshape(-1,1)
 b=np.array(y_)
-if a == [] and b == []:
+if a == [] :
     reg.fit(np.array(x_).reshape(-1,1),np.array(y_))
     m = reg.coef_[0]
     c = reg.intercept_
