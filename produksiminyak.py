@@ -177,7 +177,7 @@ df__ = df__.sort_values('produksi_total',ascending=False).reset_index()
 
 plt.clf() # clear the figure
 
-plt.title('{B} Negara dengan Produksi Terbesar Kumulatif Sepanjang Tahun {T}'.format(B=B_,T=T))
+plt.title('{B} Negara dengan Produksi Terbesar Kumulatif'.format(B=B_))
 plt.bar(df__['negara'][:B_],df__['produksi_total'][:B_],width=0.9, bottom=None, align="center",
             color="orange", edgecolor="yellow", data=None, zorder=3)
 plt.grid(True, color="grey", linewidth="0.7", linestyle="-.", zorder=0)
